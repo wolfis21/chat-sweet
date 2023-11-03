@@ -1,9 +1,11 @@
 <?php 
+/* 
 // Obtener la URL solicitada
 $url = $_SERVER['REQUEST_URI'];
 
 // Filtrar la URL para eliminar cualquier parámetro de consulta (?param=value) y obtener solo la ruta
 $url = strtok($url, '?');
+$url = explode('/', $url);
 
 // Rutas disponibles
 $routes = [
@@ -18,25 +20,25 @@ $routes = [
 ];
 
 // Verificar si la ruta solicitada existe
-if (array_key_exists($url, $routes)) {
+if (array_key_exists($url[0], $routes)) {
     // Obtener el controlador y el método correspondiente a la ruta
-    $route = $routes[$url];
+    $route = $routes[$url[0]];
     $routeParts = explode('@', $route);
     $controllerName = $routeParts[0];
     $methodName = $routeParts[1];
 
     // Incluir el archivo del controlador correspondiente
-    require_once 'controllers/' . $controllerName . '.php';
+    require_once 'controller/' . $controllerName . '.php';
 
     // Crear una instancia del controlador
-    $controller = new $controllerName();
+    $controller = new $controllerName;
 
     // Llamar al método del controlador correspondiente
     $controller->$methodName();
 } else {
     // Manejar la ruta no encontrada
     echo 'Ruta no encontrada.';
-}
+} */
 
 /* // Todo esta lógica hara el papel de un FrontController
 if(!isset($_REQUEST['h']))
@@ -61,3 +63,20 @@ else
     // Llama la accion
     call_user_func( array( $controller, $accion ) );
 } */
+
+require 'Routing.php';
+require 'controller/HomeController.php';
+
+$router = new Routing;
+
+$router->add('/',function(){
+  echo "Hola Mundo - Esta es una ruta simple";
+});
+
+//de esta manera llamamos una funcion dentro de una clase
+//class @ method
+$router->add('/home','HomeController@showHome');
+
+$router->add('/about','HomeController@showAbout');
+
+$router->run();
