@@ -63,7 +63,7 @@ else
     // Llama la accion
     call_user_func( array( $controller, $accion ) );
 } */
-
+/*
 require 'Routing.php';
 require 'controller/HomeController.php';
 
@@ -79,4 +79,7 @@ $router->add('/home','HomeController@showHome');
 
 $router->add('/about','HomeController@showAbout');
 
-$router->run();
+$router->run();*/
+
+require_once 'autoload.php';
+require_once 'routes/web.php';
