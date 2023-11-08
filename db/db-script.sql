@@ -18,6 +18,32 @@ CREATE SCHEMA IF NOT EXISTS `chat-sweet` DEFAULT CHARACTER SET utf8 ;
 USE `chat-sweet` ;
 
 -- -----------------------------------------------------
+-- Table `chat-sweet`.`person`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `chat-sweet`.`person` (
+  `id` INT NOT NULL,
+  `name` VARCHAR(45) NULL,
+  `last_name` VARCHAR(45) NULL,
+  `email` VARCHAR(45) NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+-- -----------------------------------------------------
+-- Table `chat-sweet`.`users`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `chat-sweet`.`users` (
+  `id` INT NOT NULL,
+  `name` VARCHAR(45) NULL,
+  `password` VARCHAR(45) NULL,
+  `person_id` INT NOT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_users_person1_idx` (`person_id` ASC) VISIBLE,
+  CONSTRAINT `fk_users_person1`
+    FOREIGN KEY (`person_id`)
+    REFERENCES `chat-sweet`.`person` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+-- -----------------------------------------------------
 -- Table `chat-sweet`.`ingredientes`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `chat-sweet`.`ingredientes` (
@@ -216,35 +242,6 @@ VALUES
   (14, 2),
   (15, 3);
 
--- -----------------------------------------------------
--- Table `chat-sweet`.`person`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `chat-sweet`.`person` (
-  `id` INT NOT NULL,
-  `name` VARCHAR(45) NULL,
-  `last_name` VARCHAR(45) NULL,
-  `email` VARCHAR(45) NULL,
-  PRIMARY KEY (`id`))
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `chat-sweet`.`users`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `chat-sweet`.`users` (
-  `id` INT NOT NULL,
-  `name` VARCHAR(45) NULL,
-  `password` VARCHAR(45) NULL,
-  `person_id` INT NOT NULL,
-  PRIMARY KEY (`id`),
-  INDEX `fk_users_person1_idx` (`person_id` ASC) VISIBLE,
-  CONSTRAINT `fk_users_person1`
-    FOREIGN KEY (`person_id`)
-    REFERENCES `chat-sweet`.`person` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
 
 -- -----------------------------------------------------
 -- Table `chat-sweet`.`chatbot_no_replies`
@@ -267,7 +264,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `chat-sweet`.`chatbot`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`chatbot` (
+CREATE TABLE IF NOT EXISTS `chat-sweet`.`chatbot` (
   `id` INT NOT NULL,
   `person_id` INT NOT NULL,
   `ingredientes_id` INT NOT NULL,
@@ -276,12 +273,12 @@ CREATE TABLE IF NOT EXISTS `mydb`.`chatbot` (
   INDEX `fk_chatbot_ingredientes1_idx` (`ingredientes_id` ASC) VISIBLE,
   CONSTRAINT `fk_chatbot_person1`
     FOREIGN KEY (`person_id`)
-    REFERENCES `mydb`.`person` (`id`)
+    REFERENCES `chat-sweet`.`person` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_chatbot_ingredientes1`
     FOREIGN KEY (`ingredientes_id`)
-    REFERENCES `mydb`.`ingredientes` (`id`)
+    REFERENCES `chat-sweet`.`ingredientes` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
