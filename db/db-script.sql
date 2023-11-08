@@ -267,16 +267,21 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `chat-sweet`.`chatbot`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `chat-sweet`.`chatbot` (
+CREATE TABLE IF NOT EXISTS `mydb`.`chatbot` (
   `id` INT NOT NULL,
-  `queries` VARCHAR(45) NULL,
-  `replies` VARCHAR(45) NULL,
   `person_id` INT NOT NULL,
+  `ingredientes_id` INT NOT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_chatbot_person1_idx` (`person_id` ASC) VISIBLE,
+  INDEX `fk_chatbot_ingredientes1_idx` (`ingredientes_id` ASC) VISIBLE,
   CONSTRAINT `fk_chatbot_person1`
     FOREIGN KEY (`person_id`)
-    REFERENCES `chat-sweet`.`person` (`id`)
+    REFERENCES `mydb`.`person` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_chatbot_ingredientes1`
+    FOREIGN KEY (`ingredientes_id`)
+    REFERENCES `mydb`.`ingredientes` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
