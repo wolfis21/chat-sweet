@@ -130,7 +130,7 @@
                         <i class="fa-solid fa-user"></i>
                     </div>
                     <div class="msg-header">
-                        <p>Hola, ¿cómo puedo ayudarte?</p>
+                        <p>Hola, ¿Cómo puedo ayudarte?</p>
                     </div>
                 </div>
             </div>
