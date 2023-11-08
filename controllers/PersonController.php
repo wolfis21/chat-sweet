@@ -1,6 +1,6 @@
 <?php
 require_once "config/conection.php";
-require_once "model/Person.php";
+require_once "models/Person.php";
 
 class PersonController {
     // Método para crear un nuevo registro
