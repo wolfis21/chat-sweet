@@ -21,7 +21,7 @@ USE `chat-sweet` ;
 -- Table `chat-sweet`.`person`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `chat-sweet`.`person` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NULL,
   `last_name` VARCHAR(45) NULL,
   `email` VARCHAR(45) NULL,
@@ -31,7 +31,7 @@ ENGINE = InnoDB;
 -- Table `chat-sweet`.`users`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `chat-sweet`.`users` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NULL,
   `password` VARCHAR(45) NULL,
   `person_id` INT NOT NULL,
@@ -47,7 +47,7 @@ ENGINE = InnoDB;
 -- Table `chat-sweet`.`ingredientes`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `chat-sweet`.`ingredientes` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
@@ -75,7 +75,7 @@ VALUES
 -- Table `chat-sweet`.`postres`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `chat-sweet`.`postres` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `receta` LONGTEXT NULL,
   `preparacion` LONGTEXT NULL,
   PRIMARY KEY (`id`))
@@ -247,7 +247,7 @@ VALUES
 -- Table `chat-sweet`.`chatbot_no_replies`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `chat-sweet`.`chatbot_no_replies` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `queries_no_replies` VARCHAR(45) NULL,
   `fecha` DATE NULL,
   `person_id` INT NOT NULL,
@@ -265,7 +265,7 @@ ENGINE = InnoDB;
 -- Table `chat-sweet`.`chatbot`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `chat-sweet`.`chatbot` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `person_id` INT NOT NULL,
   `ingredientes_id` INT NOT NULL,
   PRIMARY KEY (`id`),

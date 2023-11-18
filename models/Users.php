@@ -20,14 +20,14 @@ class Users{
 	    }
 
         public function register(Person $person, Users $users){
-            $verification = "SELECT * FROM users WHERE id = $users->id";
+/*             $verification = "SELECT * FROM users WHERE 'name' = $users->name";
             $query = $this->pdo->query($verification);
 
             if ($query->fetchAll(PDO::FETCH_ASSOC) == true){
 
-            }else{  
+            }else{   */
                 try{
-                    $sql = "INSERT INTO person('name',last_name,email) VALUES (?,?,?)";
+                    $sql = "INSERT INTO person(name,last_name,email) VALUES (?,?,?)";
                     $this->pdo->prepare($sql)->execute(
                         array(
                             $person->name,
@@ -37,7 +37,7 @@ class Users{
                     );
                     $person_id = $this->pdo->lastInsertId();
                     
-                    $sql = "INSERT INTO users('name','password',person_id) VALUES (?,?,?)";
+                    $sql = "INSERT INTO users(name,password,person_id) VALUES (?,?,?)";
                     $this->pdo->prepare($sql)->execute(
                         array(
                             $users->name,
@@ -47,7 +47,7 @@ class Users{
                     );
                 }catch(Exception $e){
                     die($e->getMessage());
-                }
+                /* } */
             }
         }
 }

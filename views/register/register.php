@@ -121,7 +121,7 @@
     <div class="container-register">
         <div class="form-box-register">
             <div class="form-value">
-                <form action="logica/register.php" method="POST">
+                <form action="?c=Users&a=save" method="POST">
                     <h2>Registro</h2>
                     <div class="input-box">                       
                         <i class="fa-solid fa-user"></i>

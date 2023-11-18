@@ -17,7 +17,7 @@ else
     
     // Instanciamos el controlador
     require_once "controllers/{$controller}Controller.php";
-    $controller = ($controller) . 'Controller';
+    $controller = ($controller).'Controller';
     $controller = new $controller;
     
     // Llama la accion

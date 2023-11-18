@@ -27,5 +27,6 @@ class UsersController{
         $person->email = $_REQUEST['email'];
 
         $this->model_u->register($person,$users);
+        require_once 'views/login/login.php';
     }
 }

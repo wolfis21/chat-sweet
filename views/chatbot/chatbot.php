@@ -15,8 +15,8 @@ if (!isset($username)){
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="../css/styles.css">
-    <link rel="stylesheet" href="../fontawesome/css/all.css">
+    <link rel="stylesheet" href="assets/css/styles.css" />
+    <link rel="stylesheet" href="assets/fontawesome/css/all.css">
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <title>MAKING FOOD</title>
 </head>
