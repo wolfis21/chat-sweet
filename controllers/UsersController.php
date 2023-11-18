@@ -3,12 +3,12 @@
 require_once "models/Person.php";
 require_once "models/Users.php";
 
-class UsersControllers{
+class UsersController{
     private $model_p;
     private $model_u;
 
     public function __CONSTRUCT(){
-        $this->model_P = new Person();
+        $this->model_p = new Person();
         $this->model_u = new Users();
     }
 
@@ -26,6 +26,6 @@ class UsersControllers{
         $person->last_name = $_REQUEST['last_name'];
         $person->email = $_REQUEST['email'];
 
-        $this->models->register($person,$users);
+        $this->model_u->register($person,$users);
     }
 }

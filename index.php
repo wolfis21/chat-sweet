@@ -1,13 +1,12 @@
 <?php
 require_once 'models/Database.php';
-// require_once 'view/login/login.php';
 
 // Todo esta lógica hara el papel de un FrontController
 if(!isset($_REQUEST['c']))
 {
     $controller = 'Users';
-    require_once "controllers/$controller.controller.php";
-    $controller = new $controller;
+    require_once "controllers/{$controller}Controller.php";
+    $controller = new UsersController();
     $controller->Index();    
 }
 else
@@ -17,8 +16,8 @@ else
     $accion = isset($_REQUEST['a']) ? $_REQUEST['a'] : 'index';
     
     // Instanciamos el controlador
-    require_once "controllers/$controller.controller.php";
-    /* $controller = ucwords($controller) . 'Controller'; */
+    require_once "controllers/{$controller}Controller.php";
+    $controller = ($controller) . 'Controller';
     $controller = new $controller;
     
     // Llama la accion

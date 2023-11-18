@@ -1,7 +1,7 @@
 <?php
 
 class Users{
-        private $pdo
+        private $pdo;
 
         public $id;
         public $name;
@@ -27,16 +27,17 @@ class Users{
 
             }else{  
                 try{
-                    $sql = "INSERT INTO person(name,last_name,email) VALUES (?,?,?)";
+                    $sql = "INSERT INTO person('name',last_name,email) VALUES (?,?,?)";
                     $this->pdo->prepare($sql)->execute(
                         array(
                             $person->name,
                             $person->last_name,
                             $person->email
                         )
-                        $person_id = $this->pdo->lastInsertId();
                     );
-                    $sql = "INSERT INTO users(name,password,person_id) VALUES (?,?,?)";
+                    $person_id = $this->pdo->lastInsertId();
+                    
+                    $sql = "INSERT INTO users('name','password',person_id) VALUES (?,?,?)";
                     $this->pdo->prepare($sql)->execute(
                         array(
                             $users->name,
