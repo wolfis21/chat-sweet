@@ -1,47 +1,52 @@
 <?php
 
 class Users{
-        private $id;
-        private $name;
-        private $password;
-        private $person_id;
+        private $pdo
 
-        public function __construct($id,$name,$password,$person_id){
-            $this->id = $id;
-            $this->name = $name;
-            $this->password = $password;
-            $this->person_id = $person_id;
-        }
+        public $id;
+        public $name;
+        public $password;
+        public $person_id;
 
-        public function getId() {
-            return $this->id;
-        }
-        
-        public function setId($id) {
-            $this->id = $id;
-        }
+        public function __CONSTRUCT(){
+            try
+            {
+                $this->pdo = Database::StartUp();     
+            }
+            catch(Exception $e)
+            {
+                die($e->getMessage());
+            }
+	    }
 
-        public function getName() {
-            return $this->name;
-        }
-        
-        public function setName($name) {
-            $this->name = $name;
-        }
+        public function register(Person $person, Users $users){
+            $verification = "SELECT * FROM users WHERE id = $users->id";
+            $query = $this->pdo->query($verification);
 
-        public function getPassword() {
-            return $this->password;
-        }
-        
-        public function setPassword($password) {
-            $this->password = $password;
-        }
+            if ($query->fetchAll(PDO::FETCH_ASSOC) == true){
 
-        public function getPersonId() {
-            return $this->person_id;
-        }
-        
-        public function setPersonId($person_id) {
-            $this->person_id = $person_id;
+            }else{  
+                try{
+                    $sql = "INSERT INTO person(name,last_name,email) VALUES (?,?,?)";
+                    $this->pdo->prepare($sql)->execute(
+                        array(
+                            $person->name,
+                            $person->last_name,
+                            $person->email
+                        )
+                        $person_id = $this->pdo->lastInsertId();
+                    );
+                    $sql = "INSERT INTO users(name,password,person_id) VALUES (?,?,?)";
+                    $this->pdo->prepare($sql)->execute(
+                        array(
+                            $users->name,
+                            $users->password,
+                            $person_id
+                        )
+                    );
+                }catch(Exception $e){
+                    die($e->getMessage());
+                }
+            }
         }
 }

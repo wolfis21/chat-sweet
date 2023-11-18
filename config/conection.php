@@ -3,7 +3,7 @@
 $HOST='localhost';
 $USER='root';
 $PASSWORD='';
-$DB='chabot-sweet';
+$DB='chat-sweet';
 
 $CONECTION = mysqli_connect($HOST,$USER,$PASSWORD,$DB);
 
