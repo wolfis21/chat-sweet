@@ -19,6 +19,10 @@ class Users{
             }
 	    }
 
+        public function login(Users $users){
+            $sql = "SELECT * FROM users WHERE 'name' = $users->name";
+        }
+
         public function register(Person $person, Users $users){
 /*             $verification = "SELECT * FROM users WHERE 'name' = $users->name";
             $query = $this->pdo->query($verification);

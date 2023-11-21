@@ -115,7 +115,7 @@
     <header class="header">
         <div class="name-navbar">MAKING FOOD</div>
         <nav class="nav">
-            <a href="logica/logout.php">Log Out</a>
+            <a href="?c=Users&a=Index">Log Out</a>
         </nav>
     </header>
     <div class="container-register">

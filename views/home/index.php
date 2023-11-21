@@ -115,8 +115,8 @@
     <header class="header">
         <div class="name-navbar">MAKING FOOD</div>
         <nav class="nav">
-            <a href="login.php">Iniciar Sesion</a>
-            <a href="register.php">Registrarse</a>
+            <a href="?c=Users&a=show_Login">Iniciar Sesion</a>
+            <a href="?c=Users&a=show_Register">Registrarse</a>
         </nav>
     </header>
     <div class="container">

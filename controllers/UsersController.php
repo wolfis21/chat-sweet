@@ -13,9 +13,24 @@ class UsersController{
     }
 
     public function Index(){
-        require_once 'views/register/register.php';
+        require_once 'views/home/index.php';
+    }
+
+    public function show_Login(){
+        require_once "views/login/login.php";
+    }
+
+    public function show_Register(){
+        require_once "views/register/register.php";
     }
     
+    public function login(){
+        $users = new Users();
+        $users->name = $_REQUEST['user'];
+        $users->password = $_REQUEST['password'];
+        
+    }
+
     public function save(){
         $users = new Users();
         $users->name = $_REQUEST['user'];

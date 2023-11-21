@@ -115,13 +115,13 @@
     <header class="header">
         <div class="name-navbar">MAKING FOOD</div>
         <nav class="nav">
-            <a href="index.php">Log Out</a>
+            <a href="?c=Users&a=Index">Log Out</a>
         </nav>
     </header>
     <div class="container">
         <div class="form-box">
             <div class="form-value">
-                <form action="logica/login.php" method="POST" id="login-form">
+                <form action="" method="POST" id="login-form">
                     <h2>Login</h2>
                     <div class="input-box">
                         <i class="fa-solid fa-user"></i>
