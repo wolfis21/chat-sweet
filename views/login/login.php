@@ -121,7 +121,7 @@
     <div class="container">
         <div class="form-box">
             <div class="form-value">
-                <form action="" method="POST" id="login-form">
+                <form action="?c=Users&a=login" method="POST" id="login-form">
                     <h2>Login</h2>
                     <div class="input-box">
                         <i class="fa-solid fa-user"></i>

@@ -20,7 +20,15 @@ class Users{
 	    }
 
         public function login(Users $users){
-            $sql = "SELECT * FROM users WHERE 'name' = $users->name";
+            
+            try{
+                $username = $users->name;
+                $sql = "SELECT * FROM users WHERE 'id' = 1";
+                $result = $this->pdo->query($sql);
+                return $result->fetchAll(PDO::FETCH_OBJ);
+            }catch(Exeption $e){
+                die($e);
+            }
         }
 
         public function register(Person $person, Users $users){
