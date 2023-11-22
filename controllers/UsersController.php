@@ -28,8 +28,12 @@ class UsersController{
         $users = new Users();
         $users->name = $_REQUEST['user'];
         $users->password = $_REQUEST['password'];
-        $this->model_u->login($users);
-        require_once 'views/chatbot/chatbot.php';
+
+        if (!empty($users->name) && !empty($users->password)){
+            $this->model_u->login($users); 
+            require_once 'views/chatbot/chatbot.php';
+        }
+       
     }
 
     public function save(){

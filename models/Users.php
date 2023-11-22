@@ -20,10 +20,14 @@ class Users{
 	    }
 
         public function login(Users $users){
-            
             try{
                 $sql = "SELECT * FROM users WHERE 'name' = '$users->name'";
                 $result = $this->pdo->query($sql);
+
+                if($users->password == $result->password){
+                    
+                }
+
                 return $result->fetchAll(PDO::FETCH_OBJ);
             }catch(Exeption $e){
                 die($e);
