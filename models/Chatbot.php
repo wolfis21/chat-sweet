@@ -26,13 +26,15 @@ class Chatbot{
                 JOIN ingredientes_has_postres ihp ON p.id = ihp.postres_id
                 JOIN ingredientes i ON ihp.ingredientes_id = i.id
                 WHERE i.name IN ('" . implode("','", $ingredientes) . "')
-                GROUP BY p.id
-                HAVING COUNT(DISTINCT i.name) = " . count($ingredientes);
+                GROUP BY p.id LIMIT 3";
+                /* HAVING COUNT(DISTINCT i.name) = " . count($ingredientes); */
+
+                /* echo $sql; */
 
                 $result = $this->pdo->query($sql);
                 return $result->fetchAll(PDO::FETCH_OBJ);
-            }catch(Exeption $e){
-                die($e);
+            }catch(Exception $e){
+                echo json_encode(array("error" => $e->getMessage()));
             }
         }
         

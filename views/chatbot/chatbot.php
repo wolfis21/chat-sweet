@@ -130,7 +130,7 @@
                         <i class="fa-solid fa-user"></i>
                     </div>
                     <div class="msg-header">
-                        <p>Hola, ¿Cómo puedo ayudarte?</p>
+                        <p>Hola, para poder ayudarte, escribe los ingredientes de esta forma (#,#,n)</p>
                     </div>
                 </div>
             </div>
