@@ -150,7 +150,7 @@
                 $(".form-chatbot").append($msg);
                 $("#data").val('');
                 $.ajax({
-                    url: 'logica/api-gpt.php',
+                    url: '?c=ChatBot&a=searchData',
                     type: 'POST',
                     data: 'text=' + $value,
                     success: function(result) {
