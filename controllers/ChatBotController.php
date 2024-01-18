@@ -26,10 +26,15 @@ class ChatBotController{
 
             $result = $this->model_i->buscarte($ingredientes);
 
-            /* var_dump($result); */
+            if($result){
+                $response = json_encode($result);
+                echo $response;
+            }else{
 
-            $response = json_encode($result);
-            echo $response;
+                echo 'Intente denuevo respetando el formato (#,#)';
+            }
+
+           
         }
     }
 }
